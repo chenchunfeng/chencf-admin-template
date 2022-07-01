@@ -11,13 +11,13 @@ import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'Home',
-
   components: {
     HelloWorld
   },
   methods: {
     hello() {
       console.log('123')
+      console.log('fix')
     }
   }
 }
