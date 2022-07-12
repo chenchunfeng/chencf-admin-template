@@ -11,7 +11,22 @@ module.exports = {
       '/api': {
         // 要代理的服务器地址  这里不用写 api
         target: 'https://api.imooc-admin.lgdsunday.club/',
-        changeOrigin: true // 是否跨域
+        changeOrigin: true, // 是否跨域
+        bypass: function (req, res) {
+          if (req.headers.accept.indexOf('html') !== -1) {
+            return '/index.html'
+          } else if (process.env.MOCK === 'yes') {
+            console.log('req.path', req.path)
+            const name = req.path.split('/api/')[1].split('/').join('_')
+
+            try {
+              const mock = require(`./mock/${name}`)
+              const result = mock(req.method)
+              delete require.cache[require.resolve(`./mock/${name}`)]
+              return res.send(result)
+            } catch (e) {}
+          }
+        }
       }
     }
   },
