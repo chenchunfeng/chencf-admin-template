@@ -1,0 +1,41 @@
+<template>
+  <div class="app-wrapper">
+    <!-- 左侧 menu -->
+    <SideBar
+      class="sidebar-container"
+      :style="{ backgroundColor: variables.menuBg }"
+    />
+    <div class="main-container">
+      <div class="fixed-header">
+        <!-- 顶部的 navbar -->
+        <NavBar />
+      </div>
+      <!-- 内容区 -->
+      <AppMain />
+    </div>
+  </div>
+</template>
+<script setup>
+import NavBar from './components/NavBar'
+import SideBar from './components/SideBar'
+import AppMain from './components/AppMain'
+// css 变量
+import variables from '@/styles/variables.scss'
+</script>
+<style lang="scss" scoped>
+@import '~@/styles/mixin.scss';
+@import '~@/styles/variables.scss';
+
+.app-wrapper {
+  @include relative;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - #{$sideBarWidth});
+  transition: width #{$sideBarDuration};
+}
+</style>
