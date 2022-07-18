@@ -19,3 +19,12 @@ export const getUserInfo = () => {
     url: '/sys/profile'
   })
 }
+
+/**
+ * 登出
+ */
+export const logout = () => {
+  return request({
+    url: '/sys/logout'
+  })
+}

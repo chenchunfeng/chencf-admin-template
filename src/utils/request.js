@@ -43,9 +43,18 @@ service.interceptors.response.use(
       return Promise.resolve(new Error(message))
     }
   },
-  (err) => {
-    ElMessage.error(err.message)
-    return Promise.resolve(new Error(err))
+  (error) => {
+    // 处理 token 超时问题
+    if (
+      error.response &&
+      error.response.data &&
+      error.response.data.code === 401
+    ) {
+      // token超时
+      store.dispatch('user/logout')
+    }
+    ElMessage.error(error.message)
+    return Promise.resolve(new Error(error))
   }
 )
 
