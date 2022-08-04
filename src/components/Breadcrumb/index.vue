@@ -7,11 +7,11 @@
       >
         <!-- 面包屑的最后一项添加no-redirect -->
         <span v-if="index === breadcrumbData.length - 1" class="no-redirect">
-          {{ item.meta.title }}
+          {{ generateRouteTitle(item.meta.title) }}
         </span>
         <!-- 可点击项 -->
         <a v-else class="redirect" @click.prevent="onLinkClick(item)">
-          {{ item.meta.title }}
+          {{ generateRouteTitle(item.meta.title) }}
         </a>
       </el-breadcrumb-item>
     </transition-group>
@@ -22,14 +22,13 @@
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+import { generateRouteTitle } from '@/utils/i18n'
 
 const route = useRoute()
 const router = useRouter()
 const breadcrumbData = ref([])
 
 const getBreadCrumb = () => {
-  console.log('route', route)
-  console.log('route.matched', route.matched)
   breadcrumbData.value = route.matched.filter(
     (item) => item.meta && item.meta.title
   )

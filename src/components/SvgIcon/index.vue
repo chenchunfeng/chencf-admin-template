@@ -4,11 +4,13 @@
     :style="styleExternalIcon"
     class="svg-external-icon svg-icon"
     :class="className"
-  />
-  <!-- 为了避免屏幕识读设备抓取非故意的和可能产生混淆的输出内容（尤其是当图标纯粹作为装饰用途时），我们为这些图标设置了 aria-hidden=“true” 属性。 -->
-  <svg v-else class="svg-icon" :class="className" aria-hidden="true">
-    <use :xlink:href="iconName" />
-  </svg>
+  ></div>
+  <div v-else style="display: inline">
+    <!-- 为了避免屏幕识读设备抓取非故意的和可能产生混淆的输出内容（尤其是当图标纯粹作为装饰用途时），我们为这些图标设置了 aria-hidden=“true” 属性。 -->
+    <svg class="svg-icon" :class="className" aria-hidden="true">
+      <use :xlink:href="iconName" />
+    </svg>
+  </div>
 </template>
 
 <script setup>

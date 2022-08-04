@@ -1,7 +1,9 @@
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-// import 'element-plus/lib/theme-chalk/index.css'
+import zh from 'element-plus/es/locale/lang/zh-cn'
+import en from 'element-plus/es/locale/lang/en'
+import store from '@/store'
 
 export default (app) => {
-  app.use(ElementPlus)
+  app.use(ElementPlus, { locale: store.getters.language === 'zh' ? zh : en })
 }

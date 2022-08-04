@@ -10,5 +10,7 @@ export default {
     return JSON.stringify(state.user.userInfo) !== '{}'
   },
   cssVar: () => variables,
-  sidebarOpened: (state) => state.app.sidebarOpened
+  sidebarOpened: (state) => state.app.sidebarOpened,
+  // 国际化语言
+  language: (state) => state.app.language
 }

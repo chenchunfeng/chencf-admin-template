@@ -7,15 +7,15 @@
       :rules="loginRules"
     >
       <div class="title-container">
-        <h3 class="title">用户登录</h3>
+        <h3 class="title">{{ $t('msg.login.title') }}</h3>
+        <LangSelect class="lang-select" effect="light" />
       </div>
-
       <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon="user" />
         </span>
         <el-input
-          placeholder="用户名"
+          placeholder="username"
           name="username"
           type="text"
           v-model="loginForm.username"
@@ -27,7 +27,7 @@
           <svg-icon icon="password" />
         </span>
         <el-input
-          placeholder="密码"
+          placeholder="password"
           name="password"
           :type="passwordType"
           v-model="loginForm.password"
@@ -45,8 +45,10 @@
         style="width: 100%; margin-bottom: 30px"
         :loading="loading"
         @click="handleLogin"
-        >登录</el-button
+        >{{ $t('msg.login.loginBtn') }}</el-button
       >
+
+      <div class="tips" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
 </template>
@@ -56,6 +58,10 @@ import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import LangSelect from '@/components/LangSelect/index.vue'
+
+const i18n = useI18n()
 
 // 数据源
 const loginForm = ref({
@@ -69,7 +75,7 @@ const loginRules = ref({
     {
       required: true,
       trigger: 'blur',
-      message: '用户名为必填项'
+      message: i18n.t('msg.login.usernameRule')
     }
   ],
   password: [

@@ -15,7 +15,7 @@ export default {
       component: () =>
         import(/* webpackChunkName: "role-list" */ '@/views/role-list/index'),
       meta: {
-        title: 'test1',
+        title: 'roleList',
         icon: 'role'
       }
     },
@@ -24,7 +24,7 @@ export default {
       component: () =>
         import(/* webpackChunkName: "role-list" */ '@/views/role-list/index'),
       meta: {
-        title: 'test2',
+        title: 'roleList',
         icon: 'role'
       }
     }
