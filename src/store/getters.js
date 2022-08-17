@@ -1,4 +1,6 @@
-import variables from '@/styles/variables.scss'
+import { MAIN_COLOR } from '@/constants'
+import { getItem } from '@/utils/storage'
+import { generateColors } from '@/utils/theme'
 
 export default {
   token: (state) => state.user.token,
@@ -9,8 +11,15 @@ export default {
   hasUserInfo: (state) => {
     return JSON.stringify(state.user.userInfo) !== '{}'
   },
-  cssVar: () => variables,
+  cssVar: (state) => {
+    return {
+      ...state.theme.variables,
+      ...generateColors(getItem(MAIN_COLOR))
+    }
+  },
   sidebarOpened: (state) => state.app.sidebarOpened,
   // 国际化语言
-  language: (state) => state.app.language
+  language: (state) => state.app.language,
+  // 主题色
+  mainColor: (state) => state.theme.mainColor
 }

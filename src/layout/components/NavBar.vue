@@ -4,6 +4,8 @@
     <Breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <!-- 换肤 -->
+      <ThemePicker class="right-menu-item hover-effect" />
       <!-- 国际化语言切换 -->
       <LangSelect class="right-menu-item hover-effect" />
 
@@ -20,13 +22,13 @@
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
             <router-link to="/">
-              <el-dropdown-item> {{ $t('msg.navBar.home') }} </el-dropdown-item>
+              <el-dropdown-item> {{ $t('navBar.home') }} </el-dropdown-item>
             </router-link>
             <a target="_blank" href="">
-              <el-dropdown-item>{{ $t('msg.navBar.course') }}</el-dropdown-item>
+              <el-dropdown-item>{{ $t('navBar.course') }}</el-dropdown-item>
             </a>
             <el-dropdown-item divided @click="logout">
-              {{ $t('msg.navBar.logout') }}
+              {{ $t('navBar.logout') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -40,6 +42,7 @@ import { useStore } from 'vuex'
 import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
+import ThemePicker from '@/components/ThemeSelect/index'
 
 const store = useStore()
 

@@ -4,8 +4,8 @@ import LangEn from './lang/en'
 import store from '@/store'
 
 const messages = {
-  zh: { msg: { ...LangZh } },
-  en: { msg: { ...LangEn } }
+  zh: { ...LangZh },
+  en: { ...LangEn }
 }
 
 function getLanguage() {
