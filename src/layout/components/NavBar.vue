@@ -4,6 +4,10 @@
     <Breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <!-- 页面搜索 -->
+      <HeaderSearch class="right-menu-item hover-effect" />
+      <!-- 全屏操作 -->
+      <Screenfull class="right-menu-item hover-effect" />
       <!-- 换肤 -->
       <ThemePicker class="right-menu-item hover-effect" />
       <!-- 国际化语言切换 -->
@@ -43,6 +47,8 @@ import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
 import ThemePicker from '@/components/ThemeSelect/index'
+import Screenfull from '@/components/Screenfull'
+import HeaderSearch from '@/components/HeaderSearch'
 
 const store = useStore()
 
@@ -66,7 +72,7 @@ const logout = () => {
     padding-right: 16px;
     ::v-deep .right-menu-item {
       display: inline-block;
-      padding: 0 18px 0 0;
+      padding: 0 9px;
       font-size: 24px;
       color: #5a5e66;
       vertical-align: text-bottom;

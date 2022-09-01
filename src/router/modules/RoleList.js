@@ -18,15 +18,6 @@ export default {
         title: 'roleList',
         icon: 'role'
       }
-    },
-    {
-      path: 'test',
-      component: () =>
-        import(/* webpackChunkName: "role-list" */ '@/views/role-list/index'),
-      meta: {
-        title: 'roleList',
-        icon: 'role'
-      }
     }
   ]
 }
