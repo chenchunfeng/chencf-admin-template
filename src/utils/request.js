@@ -17,6 +17,7 @@ service.interceptors.request.use(
     // 在这个位置需要统一的去注入token
     if (store.getters.token) {
       if (isCheckTimeout()) {
+        debugger
         // 登出操作
         store.dispatch('user/logout')
         return Promise.reject(new Error('token 失效'))
@@ -54,6 +55,7 @@ service.interceptors.response.use(
       store.dispatch('user/logout')
     }
     ElMessage.error(error.message)
+    debugger
     return Promise.resolve(new Error(error))
   }
 )

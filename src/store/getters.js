@@ -21,5 +21,7 @@ export default {
   // 国际化语言
   language: (state) => state.app.language,
   // 主题色
-  mainColor: (state) => state.theme.mainColor
+  mainColor: (state) => state.theme.mainColor,
+  // 标签列表
+  tagsViewList: (state) => state.app.tagsViewList
 }

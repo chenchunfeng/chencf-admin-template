@@ -62,11 +62,9 @@ const onSelectChange = (val) => {
 const router = useRouter()
 let searchPool = computed(() => {
   const filterRoutes = filterRouter(router.getRoutes())
-  console.log(filterRoutes)
   return generateRoutes(filterRoutes)
 })
 
-console.log(searchPool.value)
 /**
  * 搜索库相关
  */
