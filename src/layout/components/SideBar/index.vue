@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div id="guide-sidebar" class="">
     <div class="logo-container">
       <el-avatar
         :size="logoHeight"
