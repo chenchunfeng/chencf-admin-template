@@ -90,7 +90,7 @@ export default {
     feature: 'Feature',
     chapter: 'Chapter',
     author: 'Author',
-    name: 'Sunday',
+    name: 'abc',
     job: 'A front-end development program',
     Introduction:
       'A senior technical expert, once worked in a domestic first-line Internet company, and has coordinated multiple large-scale projects with more than tens of millions of users.'

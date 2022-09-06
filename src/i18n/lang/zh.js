@@ -89,7 +89,7 @@ export default {
     feature: '功能',
     chapter: '章节',
     author: '作者',
-    name: 'Sunday',
+    name: 'abc',
     job: '一个前端开发程序猿',
     Introduction:
       '高级技术专家，曾就职于国内一线互联网公司，统筹过的多个大型项目用户数已过千万级。'
