@@ -4,18 +4,18 @@ export default {
   path: '/user',
   component: layout,
   redirect: '/user/manage',
-  name: 'roleList',
+  name: 'permissionList',
   meta: {
     title: 'user',
     icon: 'personnel'
   },
   children: [
     {
-      path: '/user/role',
-      component: () => import('@/views/role-list/index'),
+      path: '/user/permission',
+      component: () => import('@/views/permission-list/index'),
       meta: {
-        title: 'roleList',
-        icon: 'role'
+        title: 'permissionList',
+        icon: 'permission'
       }
     }
   ]

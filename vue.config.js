@@ -16,11 +16,16 @@ module.exports = {
           if (req.headers.accept.indexOf('html') !== -1) {
             return '/index.html'
           } else if (process.env.MOCK === 'yes') {
+            if (!req.path || !req.path.includes('/api')) return
             try {
               // 路由最后一段有可能是id
               const reqPathArr = req.path.split('/api/')[1].split('/')
               const lastPath = reqPathArr[reqPathArr.length - 1]
-              if (/[0-9]+/.test(lastPath) && /[a-z]+/.test(lastPath)) {
+              // id的规则，每个项目可能都不一样，要具体修复
+              if (
+                /[0-9]+/.test(lastPath) ||
+                (/[0-9]+/.test(lastPath) && /[a-z]+/.test(lastPath))
+              ) {
                 req.query.pathId = reqPathArr.pop()
               }
               const name = reqPathArr.join('_')
@@ -29,15 +34,20 @@ module.exports = {
               console.log(name, req.method)
               if (req.method.toUpperCase() === 'POST') {
                 let data = ''
+
                 req
                   .on('data', function (chunck) {
                     data += chunck
                   })
                   .on('end', function () {
-                    console.log('post-data', data.toString())
-                    const result = mock(req.method, JSON.parse(data.toString()))
+                    const result = mock(
+                      req.method,
+                      JSON.parse(data.toString()),
+                      req.query
+                    )
                     delete require.cache[require.resolve(`./mock/${name}`)]
-                    return res.send(result)
+                    console.log('result', result)
+                    res.send(result)
                   })
                 return
               } else {
@@ -51,7 +61,8 @@ module.exports = {
           }
         }
       }
-    }
+    },
+    port: '8082'
   },
   chainWebpack(config) {
     // 设置 svg-sprite-loader

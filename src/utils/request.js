@@ -42,7 +42,7 @@ service.interceptors.response.use(
       return data
     } else {
       ElMessage.error(message)
-      return Promise.resolve(new Error(message))
+      return Promise.reject(new Error(message))
     }
   },
   (error) => {
@@ -56,7 +56,7 @@ service.interceptors.response.use(
       store.dispatch('user/logout')
     }
     ElMessage.error(error.message)
-    return Promise.resolve(new Error(error))
+    return Promise.reject(new Error(error))
   }
 )
 

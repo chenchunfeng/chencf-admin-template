@@ -2,7 +2,7 @@ import { login, getUserInfo, logout } from '@/api/sys'
 import md5 from 'md5'
 import { setItem, getItem, removeAllItem } from '@/utils/storage'
 import { TOKEN } from '@/constants'
-import router from '@/router'
+import router, { resetRouter } from '@/router'
 import { setTimeStamp } from '@/utils/auth'
 
 export default {
@@ -48,6 +48,7 @@ export default {
     },
     logout({ commit }) {
       return new Promise((resolve, reject) => {
+        resetRouter()
         logout()
           .then((res) => {
             // 清空token 也可以this.commit('user/setToken')
@@ -57,7 +58,7 @@ export default {
             // 清空localStorage缓存
             removeAllItem()
             // 跳转登录页
-            router.push('login')
+            router.push('/login')
             resolve(res)
           })
           .catch((e) => {
